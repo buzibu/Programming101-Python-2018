@@ -264,7 +264,6 @@ def char_histogram(string):
 ### Test examples
 
 ```python
->>> count_consonants("Python")
 >> char_histogram("Python!")
 { 'P': 1, 'y': 1, 't': 1, 'h': 1, 'o': 1, 'n': 1, '!': 1 }
 >>> char_histogram("AAAAaaa!!!")
