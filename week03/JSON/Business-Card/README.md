@@ -9,6 +9,8 @@ You have a `data.json` with the same people from the previous task. It's updated
 
 **NOTE 3** Pay attention to the `class` properties in the `example.html`. We've added some default CSS styles with `styles.css`. **They match by the class property values!**
 
+**NOTE 4** Add the gender of the person in the `business-card` div classes and see what happens. (`<div class="business-card male">`)
+
 ```
 $ python3 business_card.py data.json
 ```
