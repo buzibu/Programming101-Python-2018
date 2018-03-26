@@ -14,43 +14,43 @@ Your application must have the following functionalities:
 In the `money_tracker.py` module you must have these methods:
 
 ```python
-def list_user_data():
+def list_user_data(all_user_data):
     pass
 
 
-def show_user_savings():
+def show_user_savings(all_user_data):
     pass
 
 
-def show_user_deposits():
+def show_user_deposits(all_user_data):
     pass
 
 
-def show_user_expenses():
+def show_user_expenses(all_user_data):
     pass
 
 
-def list_user_expenses_ordered_by_categories():
+def list_user_expenses_ordered_by_categories(all_user_data):
     pass
 
 
-def show_user_data_per_date(date):
+def show_user_data_per_date(date, all_user_data):
     pass
 
 
-def list_income_categories():
+def list_income_categories(all_user_data):
     pass
 
 
-def list_expense_categories():
+def list_expense_categories(all_user_data):
     pass
 
 
-def add_income(income_category, money, date):
+def add_income(income_category, money, date, all_user_data):
     pass
 
 
-def add_expense(expense_category, money, date):
+def add_expense(expense_category, money, date, all_user_data):
     pass
 ```
 
@@ -153,17 +153,33 @@ Choose one of the following options to continue:
 6 - exit
 ```
 
+
+** To be able to test your methods, you have to pass parameters that are not going to change with time.
+
+## Example
+```python
+>>> all_user_data = {'22-03-2018': {'income': [(10, 'Deposit')], 'expense': [(27.7, 'Food')]}, '23-03-2018': {'income': [(700, 'Salary'), (50, 'Savings')], 'expense': [(4, 'Eating Out')]}}
+>>> show_user_savings(all_user_data)
+[(10, 'Deposit'), (700, 'Salary')]
+```
+
+For the `all_user_data` parameter use the `dict` data structure.
+
+** Do not forget to catch the exceptions:**
+- when a user passes an invalid option(number out of the range (1, 6))
+- when the file with the user data does not exist
+- when a user tries to add an income/expense with a negative amount of money. For this example, you have to create your custom exception.
+
+
 ## Test Examples:
 ```python
->>> show_user_savings()
-[(10, 'Deposit'), (200, 'Deposit'), (50, 'Savings'), (760, 'Salary')]
->>> list_user_expenses_ordered_by_categories()
+>>> list_user_expenses_ordered_by_categories({'22-03-2018': {'expense': [(5.5, ' Eating Out'), (34.0, ' Clothes'), (41.79, ' Food'), (12.0, ' Eating Out'), (7.0, ' House'), (14.0, ' Pets'), (112.4, ' Bills'), (21.5, ' Transport')], 'income': [(760.0, ' Salary')]}, '23-03-2018': {'expense': [(15.0, ' Food'), (5.0, ' Sports')], 'income': [(50.0, ' Savings'), (200.0, ' Deposit'), (10.0, ' Deposit')]}})
 [(112.40, 'Bills'), (34, 'Clothes'), (5.5, 'Eating Out'), (12, 'Eating Out'), (15, 'Food'), (41.79, 'Food'), (7, 'House'), (14, 'Pets'), (5, 'Sports'), (21.5, 'Transport')]
->>> show_user_data_per_date('23-03-2018')
+>>> show_user_data_per_date('23-03-2018', {'22-03-2018': {'expense': [(5.5, ' Eating Out'), (34.0, ' Clothes'), (41.79, ' Food'), (12.0, ' Eating Out'), (7.0, ' House'), (14.0, ' Pets'), (112.4, ' Bills'), (21.5, ' Transport')], 'income': [(760.0, ' Salary')]}, '23-03-2018': {'expense': [(15.0, ' Food'), (5.0, ' Sports')], 'income': [(50.0, ' Savings'), (200.0, ' Deposit'), (10.0, ' Deposit')]}})
 [(50, 'Savings', 'New Income'), (15, 'Food', 'New Expense'), (200, 'Deposit', 'New Income'), (5, 'Sports', 'New Expense'), (10, 'Deposit', 'New income')]  
->>> list_income_categories()
+>>> list_income_categories({'22-03-2018': {'expense': [(5.5, ' Eating Out'), (34.0, ' Clothes'), (41.79, ' Food'), (12.0, ' Eating Out'), (7.0, ' House'), (14.0, ' Pets'), (112.4, ' Bills'), (21.5, ' Transport')], 'income': [(760.0, ' Salary')]}, '23-03-2018': {'expense': [(15.0, ' Food'), (5.0, ' Sports')], 'income': [(50.0, ' Savings'), (200.0, ' Deposit'), (10.0, ' Deposit')]}})
 ['Salary', 'Deposit', 'Savings']   
->>> add_income('Salary', 600, '25-03-2018')
->>> add_expense('Health', 2.5, '25-03-2018')
+>>> add_income('Salary', 600, '25-03-2018', {'22-03-2018': {'expense': [(5.5, ' Eating Out'), (34.0, ' Clothes'), (41.79, ' Food'), (12.0, ' Eating Out'), (7.0, ' House'), (14.0, ' Pets'), (112.4, ' Bills'), (21.5, ' Transport')], 'income': [(760.0, ' Salary')]}, '23-03-2018': {'expense': [(15.0, ' Food'), (5.0, ' Sports')], 'income': [(50.0, ' Savings'), (200.0, ' Deposit'), (10.0, ' Deposit')]}})
+>>> add_expense('Health', 2.5, '25-03-2018', {'22-03-2018': {'expense': [(5.5, ' Eating Out'), (34.0, ' Clothes'), (41.79, ' Food'), (12.0, ' Eating Out'), (7.0, ' House'), (14.0, ' Pets'), (112.4, ' Bills'), (21.5, ' Transport')], 'income': [(760.0, ' Salary')]}, '23-03-2018': {'expense': [(15.0, ' Food'), (5.0, ' Sports')], 'income': [(50.0, ' Savings'), (200.0, ' Deposit'), (10.0, ' Deposit')]}})
 
 ```
