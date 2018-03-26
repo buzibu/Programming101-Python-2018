@@ -74,8 +74,8 @@
         "age": 23,
         "birth_date": "03/03/2003",
         "birth_place": "Vratsa",
-        "gender": "female",
-        "interests": ["eating", "sleeping", "drinking"],
+        "gender": "male",
+        "interests": ["eating", "sleeping", "drinking water"],
         "avatar": "pavli.png",
         "skills": [{
             "name": "Python",
