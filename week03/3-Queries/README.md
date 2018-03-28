@@ -46,7 +46,7 @@ This is short for 'grater than' and 'less than'. This query should return all of
 
 ### order_by
 ```
-    filter('example_data.csv', salary__gte=1000, salary__lte=3000, order_by='salary')
+    filter('example_data.csv', salary__gt=1000, salary__lt=3000, order_by='salary')
 ```
 If you have the ``order_by`` argument that means that you have to order your results by this field starting withe lowest value.
 
