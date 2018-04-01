@@ -67,12 +67,16 @@ def max_consecutive(items):
 def count_words_in_ll(mat,word):
     c = 0
     for row in mat:
-         c += count_substrings(''.join(row),word)
+        c += count_substrings(''.join(row),word)
     return c
 
+
+# read data from cli
 def read_input():
     word = input()
     size = input().split()
+    size[0] = int(size[0])
+    size[1] = int(size[1])
     matrix = []
     while True:
         line = input()
@@ -96,17 +100,100 @@ def reversed_rows(matrix):
 
 # return list of matrix diagonals
 def find_diagonals(matrix):
+    diagonals = []
+    max_row = len(matrix)
+    max_col = len(matrix[0])
 
-    pass
+    # get main diagonal and above it
+    for col in range(0, max_col):
+        r = 0
+        c = col
+        d = []
+        while r < max_row and c < max_col:
+            d.append(matrix[r][c])
+            r += 1
+            c += 1
+        diagonals.append(d)
+
+    # get diagonals below main diagonal
+    for row in range(1, max_row):
+        r = row
+        c = 0
+        d = []
+        while r < max_row and c < max_col:
+            d.append(matrix[r][c])
+            r += 1
+            c += 1
+        diagonals.append(d)
+
+    # get second main diagonal and above it
+    for col in range(max_col - 1, -1, -1):
+        r = 0
+        c = col
+        d = []
+        while r < max_row and c >= 0:
+            d.append(matrix[r][c])
+            r += 1
+            c -= 1
+        diagonals.append(d)
+
+    # get second diagonals below main diagonal
+    for row in range(1, max_row):
+        r = row
+        c = max_col - 1
+        d = []
+        while r < max_row and c >= 0:
+            d.append(matrix[r][c])
+            r += 1
+            c -= 1
+        diagonals.append(d)
+
+    return diagonals
 
 
+# get matrix columns (transpose matrix)
+def columns(m):
+    t_m = []
+    for c in range(len(m[0])):
+        t_m.append([row[c] for row in m])
+    return t_m
+
+
+# check if name is palindrome Palindrome
+def palindrome(n):
+    nstr = str(n)
+    first_part = nstr[:len(nstr)//2]
+    if len(nstr)%2 == 0:
+        second_part = nstr[-len(nstr)//2:]
+    else:
+        second_part = nstr[-(len(nstr)-1)//2:]
+    if first_part == second_part[::-1]:
+        return True
+    else:
+        return False
+
+
+#
 def word_counter():
     word, size, matrix = read_input()
-    suma = count_words_in_ll(matrix,word)
-    suma += count_words_in_ll(reversed_rows(matrix),word)
-    suma += count_words_in_ll(reversed_rows(matrix), word)
-    suma += count_words_in_ll(find_diagonals(matrix),word)
-    suma += count_words_in_ll(reversed_rows(find_diagonals(matrix)), word)
-    return suma
+    if len(matrix) != size[0] or len(matrix[0]) != size[1]:
+        print('Invalid number of rows or columns!')
+        return 0
+
+    suma = count_words_in_ll(matrix,word)  # rows
+    suma += count_words_in_ll(reversed_rows(matrix),word)  # reversed rows
+    suma += count_words_in_ll(columns(matrix), word)  # columns
+    suma += count_words_in_ll(reversed_rows(columns(matrix)), word) # reversed columns
+    suma += count_words_in_ll(find_diagonals(matrix),word)  # diagonals
+    suma += count_words_in_ll(reversed_rows(find_diagonals(matrix)), word)  # reversed diagonals
+
+    if palindrome(word):
+        return suma//2
+    else:
+        return suma
+
 
 # -------------------------------------------------------------------------
+
+# Gas Stations
+
