@@ -11,7 +11,7 @@ You have to create the following structure:
 
 * in `parse_money_tracker_data.py` you have to parse the data coming from `money_tracker.txt` and return list of the rows
 * in `aggregated_money_tracker.py` you need to process the list of rows and create an aggregated object
-* `money_tracker_option.py` is responsible to call the MoneyTracker methods based on the option provided from the user
+* `money_tracker_menu.py` is responsible to call the MoneyTracker methods based on the option provided from the user
 * the `money_tracker.py` module should process the user data, This class takes just one attribute - AggregatedMoneyTracker object.
 * and the `main.py` is the starting point of the application.
 
