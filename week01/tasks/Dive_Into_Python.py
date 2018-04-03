@@ -195,5 +195,28 @@ def word_counter():
 
 # -------------------------------------------------------------------------
 
+
 # Gas Stations
+def gas_stations(distance, tank_size, stations):
+    stop_st = []
+    current_tank = tank_size
+    for i, st in enumerate(stations):
+        current_tank -= stations[i]
+        if st == stations[-1]:
+            if current_tank < (distance - stations[i] ):
+                print('current tank', current_tank)
+                print('last stop after', distance - stations[i])
+                stop_st.append(stations[i])
+                current_tank = tank_size
+        else:
+            if current_tank < (stations[i + 1] - stations[i]):
+                print('current tank', current_tank)
+                print('next stop after', stations[i + 1] - stations[i])
+                stop_st.append(stations[i])
+                current_tank = tank_size
+    return stop_st
+
+
+
+
 
