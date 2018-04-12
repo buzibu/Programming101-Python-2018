@@ -19,10 +19,12 @@ $ python3 solution.py data.json
 To make possible the testing of your solutions, please construct it in this way:
 ```python
 if __name__ == '__main__':
-    main()
+    filename = sys.argv[2]
+    main(filename)
 ```
-Where `main()` returns an **iterable** with the **generated html file names**.
-Something like: `['ivo_ivo.html', 'rado_rado.html', 'pavli_pavli.html']`
+Where:
+1) `main(filename)` returns an **iterable** with the **generated html file names**. Something like: `['ivo_ivo.html', 'rado_rado.html', 'pavli_pavli.html']`
+2) `filename` argument is the name of the **expected JSON file**
 
 Example:
 This is how the HTML file for 'Ivo Ivo' (`ivo_ivo.html`) should look like:
