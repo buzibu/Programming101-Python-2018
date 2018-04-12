@@ -18,6 +18,10 @@ def list_user_data(all_user_data):
     pass
 
 
+def show_user_incomes(all_user_data):
+    pass
+
+
 def show_user_savings(all_user_data):
     pass
 
@@ -159,8 +163,8 @@ Choose one of the following options to continue:
 ## Example
 ```python
 >>> all_user_data = {'22-03-2018': {'income': [(10, 'Deposit')], 'expense': [(27.7, 'Food')]}, '23-03-2018': {'income': [(700, 'Salary'), (50, 'Savings')], 'expense': [(4, 'Eating Out')]}}
->>> show_user_savings(all_user_data)
-[(10, 'Deposit'), (700, 'Salary')]
+>>> show_user_incomes(all_user_data)
+[(10, 'Deposit'), (50, 'Savings'), (700, 'Salary')]
 ```
 
 For the `all_user_data` parameter use the `dict` data structure.
