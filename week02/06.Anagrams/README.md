@@ -59,3 +59,13 @@ Output:
 ```
 ANAGRAMS
 ```
+
+## Test Signature
+To verify that your implementation is right, use the following signature and upload your solution to the system.
+
+```python
+def anagrams(word_1, word_2):
+    pass
+```
+
+The returned value is either 'ANAGRAMS' or 'NOT ANAGRAMS'.
