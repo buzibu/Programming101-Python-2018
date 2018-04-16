@@ -1,0 +1,1 @@
+- Slides for decorators: http://slides.com/hackbulgaria/copy-of-107
