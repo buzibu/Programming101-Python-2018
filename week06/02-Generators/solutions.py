@@ -51,8 +51,15 @@ class Chain:
                 raise StopIteration()
 
 
+def chain5(iterable_one, iterable_two):
+    yield from iterable_one
+
+    for el in iterable_one:
+        yield el
+
+
 iterable1 = [1, 2, 3]
 iterable2 = ('Ivo', 'Pavli')
 
-for element in chain4(iterable1, iterable2):
+for element in chain5(iterable1, iterable2):
     print(element)
