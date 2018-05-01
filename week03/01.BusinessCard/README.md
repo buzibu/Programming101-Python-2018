@@ -12,10 +12,19 @@ You have a `data.json` with the same people from the previous task. It's updated
 **NOTE 4** Add the gender of the person in the `business-card` div classes and see what happens. (`<div class="business-card male">`)
 
 ```
-$ python3 business_card.py data.json
+$ python3 solution.py data.json
 ```
 
-This should print or open HTML files for each person.
+### Structure
+To make possible the testing of your solutions, please construct it in this way:
+```python
+if __name__ == '__main__':
+    filename = sys.argv[2]
+    main(filename)
+```
+Where:
+1) `main(filename)` returns an **iterable** with the **generated html file names**. Something like: `['ivo_ivo.html', 'rado_rado.html', 'pavli_pavli.html']`
+2) `filename` argument is the name of the **expected JSON file**
 
 Example:
 This is how the HTML file for 'Ivo Ivo' (`ivo_ivo.html`) should look like:
